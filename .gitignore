@@ -1,0 +1,6 @@
+_venv
+db.sqlite3
+_core/__pycache__
+_core/__init__.py
+logger/migrations
+logger/__init__.py
