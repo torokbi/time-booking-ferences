@@ -1,0 +1,110 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+<h2>Üdv Bence!</h2>
+<p>Az alábbi sávokra jelentkeztél:</p>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Sáv</th>
+            <th>Előadás neve</th>
+            <th>Előadó</th>
+            <th>Helyszín</th>
+            <th>Művelet</th>
+        </tr>
+    </thead>
+    <tr>
+        <th>A</th>
+        <th>Isten jelenléte a sejtbiológiában</th>
+        <th>Gipsz Jakab</th>
+        <th>10/b</th>
+        <th></th>
+    </tr>
+    <tr>
+        <th>B</th>
+        <th>Generációs szakadékok</th>
+        <th>Tihamér András</th>
+        <th>Tornaterem</th>
+        <th></th>
+    </tr>
+    <tr>
+        <th>C</th>
+        <th>Gyónás - Ciril Atya</th>
+        <th></th>
+        <th>Német 2</th>
+        <th></th>
+    </tr>
+</table>
+<h2> Foglalás</h2>
+<p>Az alábbi programok közül tudsz válogatni a lelkinap folyamán. Az A és B sávba kötelezően kell egy-egy programra jelentkezni, ha pedig gyónni szeretnél akkor a C sávban teheted azt meg. A jelentkezés határideje <b>20223.05.01</b>! Ha eddig nem iratkozol fel sehova, akkor az osztályfőnököd választ neked programot! Ha egy programot nem látsz, akkor az megtelt, vagy nem a te korosztályodnak szól.</p>
+<h3>A sáv</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Előadás neve</th>
+            <th>Előadó</th>
+            <th>Leírás</th>
+            <th>Helyszín</th>
+            <th>Jelentkezés</th>
+        </tr>
+    </thead>
+    {% for event in events %}
+        {% if event.colum == 1 %}
+            <tr>
+                <th>{{ event.name }}</th>
+                <th>{{ event.tutor }}</th>
+                <th>{{ event.description }}</th>
+                <th>{{ event.location }}</th>
+                <th><a class="btn btn-success" href="#" role="button">Feliratkozom</a></th>
+            </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+<h3>B sáv</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Előadás neve</th>
+            <th>Előadó</th>
+            <th>Leírás</th>
+            <th>Helyszín</th>
+            <th>Jelentkezés</th>
+        </tr>
+    </thead>
+    {% for event in events %}
+        {% if event.colum == 2 %}
+            <tr>
+                <th>{{ event.name }}</th>
+                <th>{{ event.tutor }}</th>
+                <th>{{ event.description }}</th>
+                <th>{{ event.location }}</th>
+                <th><a class="btn btn-success" href="#" role="button">Feliratkozom</a></th>
+            </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+<h3>C sáv</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Előadás neve</th>
+            <th>Előadó</th>
+            <th>Leírás</th>
+            <th>Helyszín</th>
+            <th>Jelentkezés</th>
+        </tr>
+    </thead>
+    {% for event in events %}
+        {% if event.colum == 3 %}
+            <tr>
+                <th>{{ event.name }}</th>
+                <th>{{ event.tutor }}</th>
+                <th>{{ event.description }}</th>
+                <th>{{ event.location }}</th>
+                <th><a class="btn btn-success" href="#" role="button">Feliratkozom</a></th>
+            </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+{% endblock content %}
