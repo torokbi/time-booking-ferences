@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+
+    <h2 class="my-3">Programok</h2>
+
+    <th><a class="btn btn-primary" href="#" role="button">Új program</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Sáv</th>
+                <th>Cím</th>
+                <th>Előadó</th>
+                <th>Leírás</th>
+                <th>Helyszín</th>
+                <th>Művelet</th>
+            </tr>
+        </thead>
+        {% for event in events %}
+            <tr>
+                <th>{{ event.colum }}</th>
+                <th>{{ event.name }}</th>
+                {% if event.tutor == "None" %}
+                    <th></th>
+                {% else %}
+                    <th>{{ event.tutor }}</th>
+                {% endif %}
+                {% if event.description == "None" %}
+                    <th></th>
+                {% else %}
+                    <th>{{ event.description }}</th>
+                {% endif %}
+                <th>{{ event.location }}</th>
+                <th>
+                    <th><a class="btn btn-primary" href="#" role="button">Szerkesztés</a>
+                    <th><a class="btn btn-danger" href="#" role="button">Törlés</a>
+                </th>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock content %}
