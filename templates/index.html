@@ -10,14 +10,14 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">Időpont foglaló</a>
+          <a class="navbar-brand" href="{{ url_for('home') }}">Időpont foglaló</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Áttekintés</a>
+                <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Áttekintés</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Jelentkeztetés</a>
@@ -27,8 +27,7 @@
                       Adminisztráció
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Alapadatok szerkesztése</a></li>
-                        <li><a class="dropdown-item" href="#">Programok kezelése</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('event_manager') }}">Programok kezelése</a></li>
                         <li><a class="dropdown-item" href="#">Program szerkesztés</a></li>
                         <li><a class="dropdown-item" href="#">Nyomtatás</a></li>
                     </ul>
