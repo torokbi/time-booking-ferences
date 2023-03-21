@@ -1,9 +1,8 @@
 from flask import Flask, redirect, url_for, render_template, request, flash
-from data import events
-from forms import Neweventform
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'fshghb162167t8jvbnodbndnb'
+from booking import app
+from booking.data import events
+from booking.forms import Neweventform
 
 @app.route("/")
 def home():
@@ -49,6 +48,3 @@ def login():
 @app.route("/forgot-pw")
 def forgot_pw():
     return render_template("forgot.html")
-
-if __name__ == '__main__':
-    app.run(debug=True)
