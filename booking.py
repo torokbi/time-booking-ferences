@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, render_template, request
+from flask import Flask, redirect, url_for, render_template, request, flash
 from data import events
 from forms import Neweventform
 
@@ -37,6 +37,7 @@ def event_new():
                 events.append({'name': form.title.data, 'tutor': form.tutor.data, 'colum':2, 'description': form.description.data, 'location': form.location.data, 'seat':form.seat.data})
             elif index[0] == "C":
                 events.append({'name': form.title.data, 'tutor': form.tutor.data, 'colum':3, 'description': form.description.data, 'location': form.location.data, 'seat':form.seat.data})
+        flash(f'A(z) {form.title.data} nevű program a megadott adatokkal mentésre került.','success')
      return redirect(url_for("event_manager"))
 
 
