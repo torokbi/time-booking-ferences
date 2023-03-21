@@ -1,0 +1,95 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+
+    <h2 class="my-3">Programok</h2>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newevent">
+        Új program
+    </button>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Sáv</th>
+                <th>Cím</th>
+                <th>Előadó</th>
+                <th>Leírás</th>
+                <th>Helyszín</th>
+                <th>Művelet</th>
+            </tr>
+        </thead>
+        {% for event in events %}
+            <tr>
+                <th>{{ event.colum }}</th>
+                <th>{{ event.name }}</th>
+                {% if event.tutor == "None" %}
+                    <th></th>
+                {% else %}
+                    <th>{{ event.tutor }}</th>
+                {% endif %}
+                {% if event.description == "None" %}
+                    <th></th>
+                {% else %}
+                    <th>{{ event.description }}</th>
+                {% endif %}
+                <th>{{ event.location }}</th>
+                <th>
+                    <th><a class="btn btn-primary" href="#" role="button">Szerkesztés</a>
+                    <th><a class="btn btn-danger" href="#" role="button">Törlés</a>
+                </th>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="modal fade" id="newevent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Új program létrehozása</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/events/new" method="post">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <input type="text" name="event_name" placeholder="Program neve" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="event_tutor" placeholder="Előadó neve" class="form-control" required>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-md-8">
+                            <input type="text" name="event_location" placeholder="Helyszín" class="form-control" required>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="number" name="event_seat" placeholder="ülőhely" class="form-control" min="0" required>
+                        </div>
+                        <div class="form-text">Ha az ülőhelyek száma nulla akkor korlátlanul lehet jelentkezni.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="description">Esemény leírása</label>
+                        <textarea class="form-control" id="description" rows="3" name="event_description"></textarea>
+                    </div>
+                    <label class="form-label" >Adja meg, hogy a program melyik sávba fog kerülni! </label> <br>
+                    <div class="form-check form-check-inline" required>
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="a" name="event_colum_a">
+                        <label class="form-check-label" for="inlineCheckbox1">A sáv</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="b" name="event_colum_b">
+                        <label class="form-check-label" for="inlineCheckbox2">B sáv</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="c" name="event_colum_c">
+                        <label class="form-check-label" for="inlineCheckbox3">C sáv</label>
+                      </div>
+                    <div class="form-text">Egy sávot mindenképpen választania kell!</div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Létrehozás</button>
+                  </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+{% endblock content %}
